@@ -1,6 +1,6 @@
-let a = ''; //first number
-let b = ''; //second number
-let sign = ''; //znak operscji
+let firstNumber = ''; 
+let secondNumber = ''; 
+let sign = ''; 
 let finish = false;
 
 const digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
@@ -9,8 +9,8 @@ const action = ['-', '+', 'x', '/'];
 const out = document.querySelector('.calculator-exit p');
 
 function clearAll () {
-   a = '';
-   b = '';
+   firstNumber = '';
+   secondNumber = '';
    sign = '';
    finish = false;
    out.textContent = 0;
@@ -27,55 +27,55 @@ document.querySelector('.buttons').onclick = (event) => {
    const key = event.target.textContent;
 
    if (digit.includes(key)) {
-      if (b ==='' && sign === ''){
-         a += key;
-         out.textContent = a;
+      if (secondNumber ==='' && sign === ''){
+         firstNumber += key;
+         out.textContent = firstNumber;
       }
-      else if (a!=='' && b!=='' && finish){
-         b = key;
+      else if (firstNumber!=='' && secondNumber!=='' && finish){
+         secondNumber = key;
          finish = false;
-         out.textContent = b;
+         out.textContent = secondNumber;
       }
       else {
-         b += key;
-         out.textContent = b;
+         secondNumber += key;
+         out.textContent = secondNumber;
       }
-      console.table(a, b, sign);
+      console.table(firstNumber, secondNumber, sign);
       return;
    }
 
    if (action.includes(key)) {
       sign = key;
       out.textContent = sign;
-      console.table(a, b, sign);
+      console.table(firstNumber, secondNumber, sign);
       return;
    }
 
    if (key === '=') {
-      if (b ==='') b = a;
+      if (secondNumber ==='') secondNumber = a;
       switch (sign) {
          case "+":
-            a = (+a) + (+b);
+            firstNumber = (+firstNumber) + (+secondNumber);
             break;
          case "-":
-            a = a - b;
+            firstNumber = firstNumber - secondNumber;
             break;
          case "x":
-            a = a * b;
+            firstNumber = firstNumber * secondNumber;
             break;
          case "/":
-            if (b === '0'){
+            if (secondNumber === '0'){
                out.textContent = 'Error';
-               a = '';
-               b = '';
+               firstNumber = '';
+               secondNumber = '';
                sign = '';
                return;
             }
-            a = a / b;
+            firstNumber = firstNumber / secondNumber;
                break;
       }
       finish = true;
-      out.textContent = a;
-      console.table(a, b, sign);
+      out.textContent = firstNumber;
+      console.table(afirstNumber, secondNumber, sign);
    }
 }
