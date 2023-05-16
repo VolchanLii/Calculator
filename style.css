@@ -10,6 +10,19 @@
    padding: 20px;
 }
 
+.calculator-exit{
+   height: 120px;
+   padding: 20px 20px;
+   display: flex;
+   justify-content: end;
+   align-items: end;
+}
+
+.calculator-exit p{
+   font-size: 54px;
+   margin: 0;
+}
+
 .buttons {
    display: flex;
    flex-wrap: wrap;
